@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Test Put (update existing document)</title>
+<script type="text/javascript">
+    var dburl = "http://127.0.0.1:5984/gmci/";
+    var http = new XMLHttpRequest();
+
+    http.onreadystatechange = function() {
+        console.log("onreadystatechange: " + http.readyState + ", " +  http.status);
+        console.log(http.responseText);
+        if (http.readyState == 4) {
+            if (http.status == 200) {
+                var response = JSON.parse(http.responseText);
+                processResponse(response);
+            }
+        }
+    };
+
+    function get(name) {
+        http.open("GET", dburl + name, false);
+        http.send();
+    }
+
+    function processResponse(response) {
+        console.log("response: " + response);
+        console.log("response: " + JSON.stringify(response));
+        http.open("PUT", dburl + response._id, false);
+        http.setRequestHeader("Content-type", "application/json");
+        var value = document.getElementById(response._id).value;
+        response["value"] = value; // update value
+        var newDoc = JSON.stringify(response);
+        http.send(newDoc);
+    }
+
+    function put(id, doc) {
+        http.open("PUT", dburl + id, false);
+        http.setRequestHeader("Content-type", "application/json");
+        var docAsString = JSON.stringify(doc);
+        http.send(docAsString);
+    }
+</script>
+</head>
+<body>
+
+<form>
+  <input type="text" name="mytext" id="mytext" oninput="get('mytext')"><br/>
+  <input type="button" value="Button" onclick="put('text2', { '_id': 'text2', 'value': 'bla' })"><br/>
+</form> 
+
+</body>
+</html>

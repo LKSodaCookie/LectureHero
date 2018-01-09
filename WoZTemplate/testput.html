@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Test Put (update existing document)</title>
+<script type="text/javascript">
+    var dburl = "http://127.0.0.1:5984/gmci/";
+    var http = new XMLHttpRequest();
+
+    http.onreadystatechange = function() {
+        console.log("onreadystatechange: " + http.readyState + ", " +  http.status);
+        console.log(http.responseText);
+    };
+
+    function put(id, doc) {
+        http.open("PUT", dburl + id, false);
+        http.setRequestHeader("Content-type", "application/json");
+        var docAsString = JSON.stringify(doc);
+        http.send(docAsString);
+    }
+</script>
+</head>
+<body>
+
+<form>
+  <input type="button" value="Button" onclick="put('text2', { '_id': 'text2', 'value': 'bla2' })"><br/>
+</form> 
+
+</body>
+</html>
