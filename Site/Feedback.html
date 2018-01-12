@@ -21,6 +21,59 @@
 		margin-top: 2em;
 	}
 </style>
+<script>
+	function submit() {
+		//document.getElementById("button").innerHTML = "test";
+		//todo submit everything;
+	}
+	
+	var last = "";
+	
+	function radioClickedLeft() {
+		if(last == "Left"){
+			document.getElementById("Left").checked = false;
+			last = "";
+		}else {
+			last = "Left";
+		}
+		document.getElementById("MidLeft").checked = false;
+		document.getElementById("MidRight").checked = false;
+		document.getElementById("Right").checked = false;
+	}
+	function radioClickedMidLeft() {
+		if(last == "MidLeft"){
+			document.getElementById("MidLeft").checked = false;
+			last = "";
+		}else {
+			last = "MidLeft";
+		}
+		document.getElementById("Left").checked = false;
+		document.getElementById("MidRight").checked = false;
+		document.getElementById("Right").checked = false;
+	}
+	function radioClickedMidRight() {
+		if(last == "MidRight"){
+			document.getElementById("MidRight").checked = false;
+			last = "";
+		}else {
+			last = "MidRight";
+		}
+		document.getElementById("Left").checked = false;
+		document.getElementById("MidLeft").checked = false;
+		document.getElementById("Right").checked = false;
+	}
+	function radioClickedRight() {
+		if(last == "Right"){
+			document.getElementById("Right").checked = false;
+			last = "";
+		}else {
+			last = "Right";
+		}
+		document.getElementById("Left").checked = false;
+		document.getElementById("MidLeft").checked = false;
+		document.getElementById("MidRight").checked = false;
+	}
+</script>
 </head>
 <body>
 
@@ -51,23 +104,22 @@
   <div class="input-group-prepend">
 	<p> grottig</p>
     <div class="input-group-text">
-    <input type="radio" aria-label="Radio button for following text input">
+    <input type="radio" onclick="radioClickedLeft()" id="Left">
     </div>
 	<div class="input-group-text">
-    <input type="radio" aria-label="Radio button for following text input">
+    <input type="radio" aria-label="Radio button for following text input" onclick="radioClickedMidLeft()" id="MidLeft">
     </div>
 	<div class="input-group-text">
-    <input type="radio" aria-label="Radio button for following text input">
+    <input type="radio" aria-label="Radio button for following text input" onclick="radioClickedMidRight()" id="MidRight">
     </div>
 	<div class="input-group-text">
-    <input type="radio" aria-label="Radio button for following text input">
+    <input type="radio" aria-label="Radio button for following text input" onclick="radioClickedRight()" id="Right">
     </div>
 	<p> super geil</p>
   </div>
-  <!--input type="text" class="form-control" aria-label="Text input with radio button"-->
 </div>
 <!--end of question 1-->
-<h2 class="question"> Wie findest du unsere Website? </h2>
+<!--<h2 class="question"> Wie findest du unsere Website? </h2>
   <div class="input-group" style="margin-left: 2em">
   <div class="input-group-prepend">
 	<p> grottig</p>
@@ -85,8 +137,8 @@
     </div>
 	<p> super geil</p>
   </div>
-  <!--input type="text" class="form-control" aria-label="Text input with radio button"-->
-</div>
+</div>-->
+ <button id="button" type="submit" class="btn btn-primary" onclick="submit()">Submit</button>
   </div>
 </div>
 </body>
