@@ -10,42 +10,48 @@
 <script>
 	var Fragen = [];
 
-	var Frage = {
-	    text: "Test",
-	    punkte: 0,
-	    kommentare,
-	    anzahlKommentare = kommentare.size();
-	    upvoting: upvoting() { alert('up')
-		downvoting: downvoting() { alert('down')}
-		comment: comment(){alert('commit')}
-	};
+class Frage {
+    constructor() {
+    this.text = document.getElementById("comment").value;
+    this.punkte = 0;
+    this.kommentare = new Array();
+    document.getElementById("comment").value = "Fifth Avenue, New York City";
+  }
+   upvoting (){
+    this.punkte += 1;
+  };
+   downvoting (){
+    this.punkte -= 1;
+  };
+   comment (text){
+    this.kommentare.push(new Kommentar(text));
+  };
 
-	function Frage(text) {
-	    this.text = text;
-	    this.punkte = 0;
-	    this.kommentare = new Array();
-	    Fragen.push(this);
-	};
-
-	var Kommentar = {
-	    text: "Test",
-	};
-
-	function Kommentar(text, Frage) {
-	    this.text = text;
-	    Frage.kommentare.push(this)
-	};
+};
 
 
-	function upvoting(punkte, Frage){
-		Frage.punkte = Frage.punkte + 1;
+
+	class Kommentar {
+    constructor(text) {
+    this.text = text;
+    this.punkte = 0;
+    }
+     upvoting(){
+    this.punkte += 1;
+    };
+     downvoting(){
+    this.punkte -= 1;
+    };
 	};
-	function downvoting(punkte, Frage){
-		Frage.punkte = Frage.punkte - 1;
-	};
-	function comment(Frage){
-		Frage.kommentare = new Kommentar();
-	};
+
+
+
+
+  function submit (){
+    var element  = document.getElementById ('button');
+    element.addEventListener ('click', Frage);
+  }
+  document.addEventListener('DOMContentLoaded', submit)
 </script>
 
 
@@ -113,7 +119,7 @@
           <label for="comment">Neue Frage:</label>
           <textarea class="form-control" rows="5" id="comment"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button id="button" type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>
 
