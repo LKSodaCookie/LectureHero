@@ -6,7 +6,7 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script>
 	var Fragen = [];
 
@@ -15,15 +15,14 @@ class Frage {
     this.text = document.getElementById("comment").value;
     this.punkte = 0;
     this.kommentare = new Array();
-    document.getElementById("comment").value = "Fifth Avenue, New York City";
   }
-   upvoting (){
+   upvoting(){
     this.punkte += 1;
   };
-   downvoting (){
+   downvoting(){
     this.punkte -= 1;
   };
-   comment (text){
+   comment(text){
     this.kommentare.push(new Kommentar(text));
   };
 
@@ -44,23 +43,26 @@ class Frage {
     };
 	};
 
+	var was = 0;
 
 
-
-  function submit (){
+  function submit() {
     var element  = document.getElementById ('button');
-    element.addEventListener ('click', Frage);
+    element.addEventListener ('click', new Frage());
+		document.getElementById("panel-body").innerHTML = "test" + was;
+		was = was + 1;
   }
-  document.addEventListener('DOMContentLoaded', submit)
+  //document.addEventListener('DOMContentLoaded', submit)
+
 </script>
 
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 
 
 </head>
 <body>
-	
+
 
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="height: 8vh">
@@ -87,10 +89,11 @@ class Frage {
 
   <!-- Textfeld fuer Fragen mit Up- und Downvote-Button -->
   <div class="container">
+
     <div class="row">
       <div class="col-sm-11">
         <div class="panel panel-default">
-          <div class="panel-body">this.text</div>
+          <div class="panel-body" id="panel-body">this.text</div>
           <div class="container" align ="center" style="width: 80%"> <a href="#"> <span class="glyphicon glyphicon-comment"></span> <span class="badge">this.anzahlKommentare</span></a><br> </div>
         </div>
       </div>
@@ -108,8 +111,11 @@ class Frage {
           </a>
 
           </div>
+
         </div>
+
       </div>
+
     </div>
 
   <!-- Textfeld fuer neue Fragen -->
@@ -119,8 +125,8 @@ class Frage {
           <label for="comment">Neue Frage:</label>
           <textarea class="form-control" rows="5" id="comment"></textarea>
         </div>
-        <button id="button" type="submit" class="btn btn-primary">Submit</button>
       </form>
+			<button id="button" type="button" class="btn btn-primary" onclick="submit()">Submit</button>
     </div>
 
   </div>
