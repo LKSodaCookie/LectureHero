@@ -6,8 +6,52 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+
+<script> test();
+    function test(){
+    
+        document.getElementById("headingQuestion1").innerHTML = "Welchem Studiengang gehören sie an?";
+        document.getElementById("answerQ1").innerHTML = "Informatik";
+        document.getElementById("answerQ2").innerHTML = "Technische Informatik";
+        document.getElementById("answerQ3").innerHTML = "Maschienenbau";
+        document.getElementById("answerQ4").innerHTML = "andere";
+        
+        }
+    function submit(){
+    
+    }
+    
+        
+</script>
+
+<style>
+    [id^='question']{
+        margin-left: 2em;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        margin-right: 2em;
+        border-bottom-style: solid;
+    
+    }
+    [id^='answer']{	
+        width: 15%;
+        text-align: left;
+        margin-left: 2em;
+    }
+    
+    #submitButton{
+        margin-left: 2em;
+    }
+    
+</style>
+
 </head>
 <body>
+
+
+
+
+
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="height: 8vh">
     <h1 align="center" style="width: 100%">LectureHero: Human Computer Interaction</h1>
@@ -28,7 +72,84 @@
   </div>
   <!-- Main Content -->
   <div class="col-sm-10" style="padding: 0"> 
+  <h1 class = "bg-light" align="center" style="width: 100%">Dozentenfragen</h1>
+  	<div id="question1">
+        <h2 id = "headingQuestion1">Frage 1</h2>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <input type="checkbox" aria-label="Checkbox for following text input">
+                </div>
+            </div>
+		<!--input type="text" class="form-control" aria-label="Text input with checkbox"-->
+		<p id=answerQ1 > Antwort 1 </p>
+		<div class="input-group-prepend">
+			<div class="input-group-text">
+				<input type="checkbox" aria-label="Checkbox for following text input">
+			</div>
+		</div>
+		<!--input type="text" class="form-control" aria-label="Text input with checkbox"-->
+		<p id=answerQ2 > Antwort 2 </p>
+        
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <input type="checkbox" aria-label="Checkbox for following text input">
+                </div>
+            </div>
+            <!--input type="text" class="form-control" aria-label="Text input with checkbox"-->
+            <p id=answerQ3 > Antwort 3 </p>
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <input type="checkbox" aria-label="Checkbox for following text input">
+                </div>
+            </div>
+            <!--input type="text" class="form-control" aria-label="Text input with checkbox"-->
+            <p id=answerQ4 > Antwort 4 </p>
+        </div>
+    </div>
+  <div id="question2">
+	<h2>Frage 2</h2>
+	<div class="input-group mb-3">
+		<div class="input-group-prepend">
+			<div class="input-group-text">
+				<input type="checkbox" aria-label="Checkbox for following text input">
+			</div>
+		</div>
+		<!--input type="text" class="form-control" aria-label="Text input with checkbox"-->
+		<p id=answerQ5 > Antwort 1 </p>
+		<div class="input-group-prepend">
+			<div class="input-group-text">
+				<input type="checkbox" aria-label="Checkbox for following text input">
+			</div>
+		</div>
+		<!--input type="text" class="form-control" aria-label="Text input with checkbox"-->
+		<p id=answerQ6 > Antwort 2 </p>
+	
+	
+		<div class="input-group-prepend">
+			<div class="input-group-text">
+				<input type="checkbox" aria-label="Checkbox for following text input">
+			</div>
+		</div>
+		<!--input type="text" class="form-control" aria-label="Text input with checkbox"-->
+		<p id=answerQ7 > Antwort 3 </p>
+		<div class="input-group-prepend">
+			<div class="input-group-text">
+				<input type="checkbox" aria-label="Checkbox for following text input">
+			</div>
+		</div>
+		<!--input type="text" class="form-control" aria-label="Text input with checkbox"-->
+		<p id=answerQ8 > Antwort 4 </p>
+	</div>
+  </div>
+  <button id="submitButton" type="submit" class="btn btn-primary" onclick="submit()">Submit</button>
   </div>
 </div>
+
+<script> 
+    test();
+        
+</script>
+
 </body>
 </html>

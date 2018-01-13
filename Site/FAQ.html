@@ -6,6 +6,40 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+
+<script> test();
+    function test(){
+    
+        document.getElementById("headingQuestion1").innerHTML = "Was ist ein FAQ?";
+        document.getElementById("answer1").innerHTML = "Eine Sammlung häufig gestellter Fragen";
+        document.getElementById("headingQuestion2").innerHTML = "Welchem Studiengang gehören sie an?";
+        document.getElementById("answer2").innerHTML = "Informatik";
+        document.getElementById("headingQuestion3").innerHTML = "Wozu braucht man eine solche Seite mit häufig gestellten Fragen?";
+        document.getElementById("answer3").innerHTML = "Damit leute z.b. diese Frage einfach nachlesen können und sie nicht ständig gefragt wird.";
+
+        
+        }
+        
+</script>
+
+<style>
+    [id^='question']{
+        margin-left: 2em;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        margin-right: 2em;
+        border-bottom-style: solid;
+    
+    }
+    [id^='answer']{	
+        width: 100%;
+        text-align: left;
+        margin-left: 2em;
+    }
+
+    
+</style>
+
 </head>
 <body>
 
@@ -28,7 +62,33 @@
   </div>
   <!-- Main Content -->
   <div class="col-sm-10" style="padding: 0"> 
+  <h1 class = "bg-light" align="center" style="width: 100%">Frequently Asked Questions (FAQ)</h1>
+    <div id="question1">
+        <h2 id = "headingQuestion1">Frage 1</h2>
+
+        
+        <p id=answer1 > Antwort 1 </p>
+       
+    </div>
+      <div id="question2">
+        <h2 id = "headingQuestion2">Frage 1</h2>
+
+        
+        <p id=answer2 > Antwort 1 </p>
+       
+    </div>
+        <div id="question3">
+        <h2 id = "headingQuestion3">Frage 1</h2>
+
+      
+        <p id=answer3 > Antwort 1 </p>
+       
+    </div>
   </div>
 </div>
+
+<script>
+    test();
+</script>
 </body>
 </html>
