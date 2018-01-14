@@ -2,10 +2,19 @@
 <html>
 <head>
 <title>LectureHero</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="backend.js"></script>
+
 </head>
 <body>
 
@@ -15,16 +24,15 @@
 
 <div class="row">
    <!-- Sidebar -->
-  <div class="col-sm-2" style="padding: 0">
-  
-    <ul class="list-group" style="width: 100%">
-      <li class="list-group-item"></li>
-      <button onclick="parent.location='Studentenfragen.html'">Studentenfragen</button>
-      <button onclick="parent.location='Dozentenfragen.html'">Dozentenfragen</button>
-      <button onclick="parent.location='Quiz.html'">Quiz</button>
-      <button onclick="parent.location='Feedback.html'">Feedback</button>
-      <button onclick="parent.location='FAQ.html'">FAQ</button>
-    </ul> 
+  <div class="col-sm-2" style="padding: 0;align: center">
+    
+    <div class="btn-group-vertical" role="group" style="width: 100%;">
+      <a type="button" class="btn btn-default" href="studentenfragen.html">Studentenfragen</a>
+      <a type="button" class="btn btn-default" href="dozentenfragen.html">Dozentenfragen</a>
+      <a type="button" class="btn btn-default" href="quiz.html">Quiz</a>
+      <a type="button" class="btn btn-default" href="feedback.html">Feedback</a>
+      <a type="button" class="btn btn-default" href="faq.html">FAQ</a>
+    </div>
   </div>
   <!-- Main Content -->
   <div class="col-sm-10" style="padding: 0"> 
