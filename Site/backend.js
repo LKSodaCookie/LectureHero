@@ -273,5 +273,10 @@ function addNewComment() {
       set("questionList");
 }
 
+function resetDB() {
+    questionList = {"list" : []};
+    set("questionList");
+}
+
 function getUrlVars() {var vars = {};var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {if(vars[key]){if(vars[key] instanceof Array){vars[key].push(value);}else{vars[key] = [vars[key], value];}}else{vars[key] = value;}});return vars;}
     
