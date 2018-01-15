@@ -42,6 +42,8 @@ requestGet.onreadystatechange = function() {
         }
         if (requestGet.status == 404) {
             console.log("not found: " + requestGet.responseText);
+            questionList = {"list" : []};
+            set("questionList");
         }
     }
 };
