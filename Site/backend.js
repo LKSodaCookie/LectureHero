@@ -241,6 +241,14 @@ function addNewQuestion() {
       
       var newQuestion = document.getElementById("NewQuestion").value;
       
+       if(newQuestion == ""){
+        
+        alert("Es muss eine Frage formuliert sein!");
+
+        return;
+
+      }
+
       document.getElementById("NewQuestion").value = "";
       
        var frage = {"question": newQuestion, "points": 0, "comments": []};
