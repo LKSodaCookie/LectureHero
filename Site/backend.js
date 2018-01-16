@@ -136,7 +136,31 @@ var setHandlers = {
 var questionList = {"list" : []};
 
 
+function sortListByPoints(list) {
+    
+    var unsortedList = list.slice();
+    var sortedList = [];
 
+    while(unsortedList.length > 0) {
+        
+        var max = 0
+        
+        for(var i = 0; i < unsortedList.length; i++) {
+            
+            if(unsortedList[i].points > unsortedList[max].points) {
+                max = i;
+            }
+            
+        }
+        
+        sortedList.push(unsortedList[max]);
+        unsortedList.splice(max, 1); 
+    }
+    
+    
+    
+    return sortedList;
+}
 
 function parseQuestionList(response) {
     
@@ -155,15 +179,18 @@ function fillQuestionList(response) {
     if(listElement) {
         document.getElementById("questionList").innerHTML = "";
         if(response) {
-            for(var i = 0; i < response.list.length; i++) {
-                var frage = response.list[i];
+            
+            var sortedList = sortListByPoints(questionList.list);
+            
+            for(var i = 0; i < sortedList.length; i++) {
+                var frage = sortedList[i];
             
             
             
                 var questionText = frage.question;
                 var commentNumber = frage.comments.length;
                 var points = frage.points;
-                var questionId = i;
+                var questionId = frage.id;
                 var QuestionString = '<div class="row"><div class="col-sm-11"><div class="panel panel-default">           <div class="panel-body" id="panel-body">' + questionText + '</div>           <div class="container" align ="center" style="width: 80%"> <a href="frageansicht.html?questionId='+questionId+'"> <span class="glyphicon glyphicon-comment"></span> <span class="badge">' +commentNumber+'</span></a><br> </div>         </div>       </div>        <div class="col-sm-1">         <div class="container">            <a onclick="upvoteQuestion('+questionId+')">             <span class="glyphicon glyphicon-triangle-top"></span>           </a>            <p>' + points + '</p>           <a onclick="downvoteQuestion('+questionId+')">             <span class="glyphicon glyphicon-triangle-bottom"></span>           </a>            </div>          </div>        </div>';
                 
                 document.getElementById("questionList").innerHTML += QuestionString;
@@ -189,7 +216,12 @@ function fillCommentList(questionId) {
     
     document.getElementById("commentList").innerHTML = "";
     
+    
+    
     if(questionList) {
+        
+        
+        
         var frage = questionList.list[questionId];
         
          var questionText = frage.question;
@@ -199,15 +231,16 @@ function fillCommentList(questionId) {
                 
         document.getElementById("commentList").innerHTML += QuestionString;
         
+        var sortedList = sortListByPoints(frage.comments);
         
-        for(var i = 0; i < frage.comments.length; i++) {
-            var comment = frage.comments[i];
+        for(var i = 0; i < sortedList.length; i++) {
+            var comment = sortedList[i];
         
         
         
             var commentText = comment.text;
             var points = comment.points;
-            var commentId = i;
+            var commentId = comment.id;
             var commentString = '<div class="row"><div class="col-sm-11"><div class="panel panel-default">           <div class="panel-body" id="panel-body">' + commentText + '</div>           </div>       </div>        <div class="col-sm-1">         <div class="container">            <a onclick="upvoteComment('+questionId+','+commentId+')">             <span class="glyphicon glyphicon-triangle-top"></span>           </a>            <p>' + points + '</p>           <a onclick="downvoteComment('+questionId+','+commentId+')">             <span class="glyphicon glyphicon-triangle-bottom"></span>           </a>            </div>          </div>        </div>';
             
             document.getElementById("commentList").innerHTML += commentString;
@@ -251,7 +284,7 @@ function addNewQuestion() {
 
       document.getElementById("NewQuestion").value = "";
       
-       var frage = {"question": newQuestion, "points": 0, "comments": []};
+       var frage = {"id":questionList.list.length,"question": newQuestion, "points": 0, "comments": []};
        
       questionList.list.push(frage);
       
@@ -266,7 +299,7 @@ function addNewComment() {
       
       document.getElementById("NewComment").value = "";
       
-      var kommentar = {"text": newComment, "points": 0};
+      var kommentar = {"id":questionList.list[params.questionId].comments.length,"text": newComment, "points": 0};
        
       questionList.list[params.questionId].comments.push(kommentar);
       
