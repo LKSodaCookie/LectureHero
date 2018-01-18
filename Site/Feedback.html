@@ -33,8 +33,21 @@
 </style>
 <script>
 	function submit() {
-		//document.getElementById("button").innerHTML = "test";
-		//todo submit everything;
+		document.getElementById("first-question").style.marginTop = "3em";
+		document.getElementById("first-question").style.fontSize = "1.5em";
+		document.getElementById("first-question").innerHTML = "Vielen Dank für die Teilnahme!";
+		var tmp = document.getElementsByClassName("input-group");
+		for(var i=0, len=tmp.length; i<len; i++)
+		{
+			tmp[i].innerHTML = "";
+		}
+		var tmp = document.getElementsByClassName("question");
+		for(var i=0; i < tmp.length; i++)
+		{
+			tmp[i].innerHTML = "";
+		}
+		tmp = document.getElementById("button");
+		tmp.parentNode.removeChild(tmp);
 	}
 	
 	var last = ["", "", ""];
@@ -79,8 +92,8 @@
 		<h1 align="center" style="width: 100%">Feedback</h1>
   </nav>
   <!-- start of question 1-->
-  <h2 class="first-question"> Wie findest du die Vorlesung? </h2>
-  <div class="input-group" style="margin-left: 2em; width: 100%; font-size: 18pt">
+  <h3 class="first-question" id ="first-question"> Wie findest du die Vorlesung? </h3>
+  <div class="input-group" style="margin-left: 2em; width: 100%; font-size: 14pt">
   <div class="input-group-prepend">
 	grottig
     <input type="radio" onclick="radioClicked(0,'Left')" id="0Left" style="margin-left: 8%; margin-right: 8%">
@@ -92,8 +105,8 @@
   </div>
 <!--end of question 1-->
   <!-- start of question 2-->
-  <h2 class="question"> Wie findest du die Software? </h2>
-  <div class="input-group" style="margin-left: 2em; width: 100%; height: 200%; font-size: 18pt">
+  <h3 class="question"> Wie findest du die Software? </h3>
+  <div class="input-group" style="margin-left: 2em; width: 100%; height: 200%; font-size: 14pt">
   <div class="input-group-prepend">
 	<p> 
 	grottig
@@ -107,8 +120,8 @@
   </div>
 <!--end of question 2-->
 <!-- start of question 3-->
-  <h2 class="question"> Wie findest du diese Frage? </h2>
-  <div class="input-group" style="margin-left: 2em; width: 100%; height: 200%; font-size: 18pt">
+  <h3 class="question"> Wie findest du diese Frage? </h3>
+  <div class="input-group" style="margin-left: 2em; width: 100%; height: 200%; font-size: 14pt">
   <div class="input-group-prepend">
 	<p> 
 	wo ist sie?
