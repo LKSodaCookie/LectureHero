@@ -18,17 +18,21 @@
 
 <script> test();
     function test(){
-    
+
         document.getElementById("headingQuestion1").innerHTML = "Was ist ein FAQ?";
         document.getElementById("answer1").innerHTML = "Eine Sammlung häufig gestellter Fragen";
-        document.getElementById("headingQuestion2").innerHTML = "Welchem Studiengang gehören sie an?";
-        document.getElementById("answer2").innerHTML = "Informatik";
-        document.getElementById("headingQuestion3").innerHTML = "Wozu braucht man eine solche Seite mit häufig gestellten Fragen?";
-        document.getElementById("answer3").innerHTML = "Damit leute z.b. diese Frage einfach nachlesen können und sie nicht ständig gefragt wird.";
+        document.getElementById("headingQuestion2").innerHTML = "Was kann man mit Studentenfragen machen?";
+        document.getElementById("answer2").innerHTML = "Man kann anonym eine Frage zur Vorlesung stellen. Studenten oder der Dozent können darauf antworten. Außerdem kann man Fragen und Antworten up- oder downvoten. Fragen und Antworten werden nach der Anzahl der Upvotes absteigend sortiert.";
+        document.getElementById("headingQuestion3").innerHTML = "Was kann man mit Dozentenfragen machen?";
+        document.getElementById("answer3").innerHTML = "Der Dozent der Vorlesung kann unter Dozentenfragen Fragen an seine Studenten richten. Das können beispielsweise Umfragen sein.";
+        document.getElementById("headingQuestion4").innerHTML = "Was kann man mit Quiz machen?";
+        document.getElementById("answer4").innerHTML = "Der Dozent der Vorlesung erstellt im Quiz Fragen zum Vorlesungsstoff. Studenten können diese Fragen beantworten und kontrollieren, wie gut sie den Stoff verstanden haben.";
+        document.getElementById("headingQuestion5").innerHTML = "Was kann man mit Feedback machen?";
+        document.getElementById("answer5").innerHTML = "Das ist eine Art Evaluation zur Vorlesung. Der Student kann die Vorlesung anonym bewerten.";
 
-        
+
         }
-        
+
 </script>
 
 <style>
@@ -37,16 +41,18 @@
         margin-top: 1em;
         margin-bottom: 1em;
         margin-right: 2em;
-        border-bottom-style: solid;
-    
+
     }
-    [id^='answer']{	
-        width: 100%;
+    [id^='answer']{
+        width: 80%;
         text-align: left;
         margin-left: 2em;
+        margin-right: 2em;
+        margin-bottom: 3em;
+        font-size: 15px;
     }
 
-    
+
 </style>
 
 </head>
@@ -61,7 +67,7 @@
 <div class="row">
    <!-- Sidebar -->
   <div class="col-sm-2" style="padding: 0;align: center">
-    
+
     <div class="btn-group-vertical" role="group" style="width: 100%;">
       <a type="button" class="btn btn-default" href="studentenfragen.html">Studentenfragen</a>
       <a type="button" class="btn btn-default" href="dozentenfragen.html">Dozentenfragen</a>
@@ -71,29 +77,43 @@
     </div>
   </div>
   <!-- Main Content -->
-  <div class="col-sm-10" style="padding: 0"> 
+  <div class="col-sm-10" style="padding: 0">
   <h1 class = "bg-light" align="center" style="width: 100%">Frequently Asked Questions (FAQ)</h1>
     <div id="question1">
-        <h2 id = "headingQuestion1">Frage 1</h2>
+        <h3 id="headingQuestion1">Frage 1</h3>
 
-        
-        <p id=answer1 > Antwort 1 </p>
-       
+
+        <p id="answer1"> Antwort 1 </p>
+
     </div>
       <div id="question2">
-        <h2 id = "headingQuestion2">Frage 1</h2>
+        <h3 id="headingQuestion2">Frage 1</h3>
 
-        
-        <p id=answer2 > Antwort 1 </p>
-       
+
+        <p id="answer2" > Antwort 1 </p>
+
     </div>
         <div id="question3">
-        <h2 id = "headingQuestion3">Frage 1</h2>
+        <h3 id="headingQuestion3">Frage 1</h3>
 
-      
-        <p id=answer3 > Antwort 1 </p>
-       
+
+        <p id="answer3" > Antwort 1 </p>
+
     </div>
+    <div id="question4">
+      <h3 id="headingQuestion4">Frage 1</h3>
+
+
+      <p id="answer4" > Antwort 1 </p>
+
+  </div>
+      <div id="question5">
+      <h3 id="headingQuestion5">Frage 1</h3>
+
+
+      <p id="answer5" > Antwort 1 </p>
+
+  </div>
   </div>
 </div>
 
