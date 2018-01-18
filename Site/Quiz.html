@@ -16,16 +16,20 @@
 
 <script src="backend.js"></script>
 
-<style> 
-	#answer{
+<style>
+	.answer{
 		width: 40%;
 		text-align: left;
 		margin-left: 2em;
 	}
-	#question{
+	.question{
 		margin-left: 2em;
 	}
-	
+	.first-question{
+		margin-top: 3em;
+		margin-left: 2em;
+	}
+
 </style>
 <script>
 	function submit() {
@@ -59,7 +63,7 @@
 <div class="row">
    <!-- Sidebar -->
   <div class="col-sm-2" style="padding: 0;align: center">
-    
+
     <div class="btn-group-vertical" role="group" style="width: 100%;">
       <a type="button" class="btn btn-default" href="studentenfragen.html">Studentenfragen</a>
       <a type="button" class="btn btn-default" href="dozentenfragen.html">Dozentenfragen</a>
@@ -74,36 +78,75 @@
 		<h1 align="center" style="width: 100%">Quiz</h1>
 	</nav>
 	<div class="first-question">
-	<h2 id="first-question">Frage 1</h2>
-	<div class="input-group" style="margin-left: 2em; width: 100%; height: 200%; font-size: 18pt">
-			<input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em">
-			Antwort 1
-			<input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em; margin-left: 20%">
-			Antwort 2
-	</div>
-	<div class="input-group" style="margin-left: 2em; width: 100%; height: 200%; font-size: 18pt">
-				<input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em">
-				Antwort 3
-				<input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em; margin-left: 20%">
-				Antwort 4
+	<h3 id="first-question">Welche Aspekte sind Komponente der Wahrnehmung?</h3>
+	<div class="input-group" style="margin-left: 2em; width: 100%; font-size: 14pt">
+		<table>
+			<tr>
+				<td>
+					<input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em">
+					Visual System
+				</td>
+				<td>
+					<span style="color: white"> __________________________ </span>
+				</td>
+				<td>
+					<input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em">
+					Auditory System
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em">
+					Hair System
+				</td>
+				<td>
+					<span style="color: white"> __________________________ </span>
+				</td>
+				<td>
+					<input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em">
+					Work System
+				</td>
+			</tr>
+			</table>
   </div>
   </div>
   <div class="question">
-	<h2>Frage 2</h2>
-	<div class="input-group" style="margin-left: 2em; width: 100%; height: 200%; font-size: 18pt">
-			<input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em">
-			Antwort 1
-			<input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em; margin-left: 20%">
-			Antwort 2
+	<h3>Was beinhaltet deklaratives Wissen?</h3>
+	<div class="input-group" style="margin-left: 2em; width: 100%; height: 200%; font-size: 14pt">
+		<table>
+			<tr>
+				<td>
+					<input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em">
+					Wie man ein Instrument spielt
+				</td>
+				<td>
+					<span style="color: white"> ____.__ </span>
+				</td>
+				<td>
+					<input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em">
+					Wie man lernt
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em">
+					Chlorophyll macht die Blätter grün.
+				</td>
+				<td>
+					<span style="color: white"> _____.__ </span>
+				</td>
+				<td>
+					<input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em">
+					Die Mitochondrie ist das Kraftwerk der Zelle.
+				</td>
+			</tr>
+			</table>
+  	</div>
 	</div>
-	<div class="input-group" style="margin-left: 2em; width: 100%; height: 200%; font-size: 18pt">
-				<input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em">
-				Antwort 3		
-				<input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em; margin-left: 20%" >
-				Antwort 4
-  </div>
   <p> </p>
-  <button id="button" type="submit" class="btn btn-primary" onclick="submit()">Submit</button>
-</div>
+
+  <button id="button" style="margin-top:2em; margin-left:2em" type="submit" class="btn btn-primary" onclick="submit()">Submit</button>
+	</div>
+
 </body>
 </html>

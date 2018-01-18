@@ -18,13 +18,13 @@
 
 <script> test();
     function test(){
-    
+
         document.getElementById("headingQuestion1").innerHTML = "Welchem Studiengang gehören sie an?";
         document.getElementById("answerQ1").innerHTML = "Informatik";
         document.getElementById("answerQ2").innerHTML = "Technische Informatik";
         document.getElementById("answerQ3").innerHTML = "Maschienenbau";
         document.getElementById("answerQ4").innerHTML = "andere";
-        
+
         }
     function submit(){
 		document.getElementById("first-question").style.textAlign = "center";
@@ -44,8 +44,8 @@
 		tmp = document.getElementById("button");
 		tmp.parentNode.removeChild(tmp);
     }
-    
-        
+
+
 </script>
 
 <style>
@@ -54,18 +54,32 @@
         margin-top: 1em;
         margin-bottom: 1em;
         margin-right: 2em;
-    
+
     }
-    [id^='answer']{	
+    [id^='answer']{
         width: 15%;
         text-align: left;
         margin-left: 2em;
     }
-    
-    #submitButton{
-        margin-left: 2em;
+
+    #button{
+      margin-top: 2em;
+      margin-left: 2em;
     }
-    
+
+    .answer{
+  		width: 40%;
+  		text-align: left;
+  		margin-left: 2em;
+  	}
+  	.question{
+  		margin-left: 2em;
+  	}
+  	.first-question{
+      margin-top: 3em;
+  		margin-left: 2em;
+  	}
+
 </style>
 
 </head>
@@ -85,7 +99,7 @@
 <div class="row">
    <!-- Sidebar -->
   <div class="col-sm-2" style="padding: 0;align: center">
-    
+
     <div class="btn-group-vertical" role="group" style="width: 100%;">
       <a type="button" class="btn btn-default" href="studentenfragen.html">Studentenfragen</a>
       <a type="button" class="btn btn-default" href="dozentenfragen.html">Dozentenfragen</a>
@@ -95,46 +109,86 @@
     </div>
   </div>
   <!-- Main Content -->
-  <div class="col-sm-10" style="padding: 0"> 
-  <h1 class = "bg-light" align="center" style="width: 100%">Dozentenfragen</h1>
+  <div class="col-sm-10" style="padding: 0">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="height: 8vh">
+  		<h1 align="center" style="width: 100%">Dozentenfragen</h1>
+  	</nav>
+
   	<div class="first-question">
-  <h2  id="first-question">Frage 1</h2>
-  <div class="input-group" style="margin-left: 2em; width: 100%; height: 200%; font-size: 18pt">
-      <input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em">
-      Antwort 1
-      <input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em; margin-left: 20%">
-      Antwort 2
-  </div>
-  <div class="input-group" style="margin-left: 2em; width: 100%; height: 200%; font-size: 18pt">
-        <input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em">
-        Antwort 3
-        <input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em; margin-left: 20%">
-        Antwort 4
+  <h3  id="first-question">Welche Programmiersprachen beherrschen Sie?</h3>
+  <div class="input-group" style="margin-left: 2em; width: 100%; height: 200%; font-size: 14pt">
+    <table>
+      <tr>
+        <td>
+          <input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em">
+          Java
+        </td>
+        <td>
+          <span style="color: white"> __________________________ </span>
+        </td>
+        <td>
+          <input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em">
+          C/C++
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em">
+          PHP
+        </td>
+        <td>
+          <span style="color: white"> __________________________ </span>
+        </td>
+        <td>
+          <input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em">
+          Python
+        </td>
+      </tr>
+      </table>
   </div>
   </div>
   <div class="question">
-  <h2>Frage 1</h2>
-  <div class="input-group" style="margin-left: 2em; width: 100%; height: 200%; font-size: 18pt">
-      <input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em">
-      Antwort 1
-      <input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em; margin-left: 20%">
-      Antwort 2
-  </div>
-  <div class="input-group" style="margin-left: 2em; width: 100%; height: 200%; font-size: 18pt">
-        <input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em">
-        Antwort 3
-        <input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em; margin-left: 20%">
-        Antwort 4
+  <h3>Welchem Studiengang gehören Sie an?</h3>
+  <div class="input-group" style="margin-left: 2em; width: 100%; height: 200%; font-size: 14pt">
+    <table>
+      <tr>
+        <td>
+          <input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em">
+          Informatik
+        </td>
+        <td>
+          <span style="color: white"> _________________ </span>
+        </td>
+        <td>
+          <input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em">
+          Technische Informatik
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em">
+          Maschinenbau
+        </td>
+        <td>
+          <span style="color: white"> _________________ </span>
+        </td>
+        <td>
+          <input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em">
+          Andere
+        </td>
+      </tr>
+      </table>
   </div>
   </div>
   <p> </p>
-  <button id="button" type="submit" class="btn btn-primary" onclick="submit()">Submit</button>
+  <button id="button" style="margin-top:2em; margin-left:2em" type="submit" class="btn btn-primary" onclick="submit()">Submit</button>
   </div>
-</div>
 
-<script> 
+
+
+<script>
     test();
-        
+
 </script>
 
 </body>
