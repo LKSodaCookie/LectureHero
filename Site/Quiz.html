@@ -25,32 +25,8 @@
 	.question{
 		margin-left: 2em;
 	}
-	.first-question{
-		margin-top: 3em;
-		margin-left: 2em;
-	}
 
 </style>
-<script>
-	function submit() {
-		document.getElementById("first-question").style.textAlign = "center";
-		document.getElementById("first-question").style.marginTop = "3em";
-		document.getElementById("first-question").style.fontSize = "1.5em";
-		document.getElementById("first-question").innerHTML = "Vielen Dank für die Teilnahme!";
-		var tmp = document.getElementsByClassName("input-group");
-		for(var i=0, len=tmp.length; i<len; i++)
-		{
-			tmp[i].innerHTML = "";
-		}
-		var tmp = document.getElementsByClassName("question");
-		for(var i=0; i < tmp.length; i++)
-		{
-			tmp[i].innerHTML = "";
-		}
-		tmp = document.getElementById("button");
-		tmp.parentNode.removeChild(tmp);
-	}
-</script>
 </head>
 <body>
 
@@ -77,75 +53,13 @@
 	<nav class="navbar navbar-expand-lg navbar-light bg-light" style="height: 8vh">
 		<h1 align="center" style="width: 100%">Quiz</h1>
 	</nav>
-	<div class="first-question">
-	<h3 id="first-question">Welche Aspekte sind Komponente der Wahrnehmung?</h3>
-	<div class="input-group" style="margin-left: 2em; width: 100%; font-size: 14pt">
-		<table>
-			<tr>
-				<td>
-					<input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em">
-					Visual System
-				</td>
-				<td>
-					<span style="color: white"> __________________________ </span>
-				</td>
-				<td>
-					<input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em">
-					Auditory System
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em">
-					Hair System
-				</td>
-				<td>
-					<span style="color: white"> __________________________ </span>
-				</td>
-				<td>
-					<input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em">
-					Work System
-				</td>
-			</tr>
-			</table>
-  </div>
-  </div>
-  <div class="question">
-	<h3>Was beinhaltet deklaratives Wissen?</h3>
-	<div class="input-group" style="margin-left: 2em; width: 100%; height: 200%; font-size: 14pt">
-		<table>
-			<tr>
-				<td>
-					<input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em">
-					Wie man ein Instrument spielt
-				</td>
-				<td>
-					<span style="color: white"> ____.__ </span>
-				</td>
-				<td>
-					<input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em">
-					Wie man lernt
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em">
-					Chlorophyll macht die Blätter grün.
-				</td>
-				<td>
-					<span style="color: white"> _____.__ </span>
-				</td>
-				<td>
-					<input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em">
-					Die Mitochondrie ist das Kraftwerk der Zelle.
-				</td>
-			</tr>
-			</table>
-  	</div>
-	</div>
+    
+   <div id="quizContainer">
+   
+   </div>
   <p> </p>
 
-  <button id="button" style="margin-top:2em; margin-left:2em" type="submit" class="btn btn-primary" onclick="submit()">Submit</button>
+  <button id="button" style="margin-top:2em; margin-left:2em" type="submit" class="btn btn-primary" onclick="submitQuiz()">Submit</button>
 	</div>
 
 </body>

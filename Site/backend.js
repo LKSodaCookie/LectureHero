@@ -44,6 +44,8 @@ requestGet.onreadystatechange = function() {
             console.log("not found: " + requestGet.responseText);
             questionList = {"list" : []};
             set("questionList");
+            set("quiz");
+            set("survey");
         }
     }
 };
@@ -126,15 +128,121 @@ var dbname = "gmci";
 var dburl = "http://127.0.0.1:5984/" + dbname + "/";
 var getHandlers = {
     "questionList": fillQuestionList,
+    "quiz":fillQuiz,
+    "survey":fillSurvey
 };
 
 var setHandlers = {
     // add further handlers here
-    "questionList": parseQuestionList
+    "questionList": parseQuestionList,
+    "quiz":parseQuiz,
+    "survey":parseSurvey
 };
 
-var questionList = {"list" : []};
 
+function parseSurvey(response) {
+    
+    
+    if(!surveyData) {
+        
+        var questionA = "Welche Programmiersprachen beherrschen Sie?";
+        
+        var choicesA = ["Java","C/C++","PHP","Python"];
+        
+        var first = {"question":questionA, "choices":choicesA,"results":[0,0,0,0,0]};
+        
+        var questionB = "Welchem Studiengang gehören Sie an?";
+        
+        var choicesB = ["Informatik","Technische Informatik","Maschinenbau","Andere"];
+        
+        var second = {"question":questionB, "choices":choicesB,"results":[0,0,0,0,0]};
+        
+        surveyData = {"questions":[first,second]};
+    }
+    
+    put(response, surveyData);
+}
+
+function fillSurvey(response) {
+    
+    
+    
+    var container = document.getElementById("surveyContainer");
+    
+    if(!container) {
+        return;
+    }
+    
+    var selected = [[false,false,false,false],[false,false,false,false]];
+    
+    for(var i = 0; i < selected.length; i++) {
+        for(var n = 0; n < selected[i].length; n++) {
+            
+            if(document.getElementById("check" + i + "," + n)) {
+            
+                if(document.getElementById("check" + i + "," + n).checked) {
+                    selected[i][n] = true;
+                }
+                else {
+                     selected[i][n] = false;
+                }
+            
+            }
+            else {
+                selected[i][n] = false;
+            }
+            
+        }
+    }
+    
+    
+    surveyData = response;
+    
+    
+    
+    var list = surveyData.questions;    
+    
+    var finalHTML = "";
+        
+    for(var i = 0; i < list.length; i++) {
+        var question = list[i];
+        
+        
+        var choices = question.choices;
+        var choicesListHTML = "";
+        for(var n = 0; n < choices.length; n++) {
+            var choice = choices[n];
+            
+            var checkbox = "";
+            
+            if(selected[i][n]) {
+                checkbox = 'checked';
+            }
+            
+            
+            choicesListHTML += '<td style="width: 50%"><input type="checkbox" id="check'+ i + "," + n + '" aria-label="Checkbox for following text input" style="margin-right: 2em;" '+checkbox+'>' + choice +  '</td>';
+            
+            if(n % 2 == 1) {
+                choicesListHTML += '</tr><tr>';
+            }
+        }
+        
+        var questionHTML = '<div class="question"> 	<h3 id="question">' + question.question + '</h3> 	<div class="input-group" style="margin-left: 2em; width: 100%; font-size: 14pt"> 		<table style="width: 100%"> 			<tr>' + choicesListHTML + '</tr> 			</table>   </div>   </div>';    
+        
+        finalHTML += questionHTML;
+    }    
+    
+    container.innerHTML = finalHTML;
+    
+    
+    
+    fillSurveyResults();
+    
+}
+
+
+var questionList = {"list" : []};
+var surveyData;
 
 function sortListByPoints(list) {
     
@@ -157,15 +265,115 @@ function sortListByPoints(list) {
         unsortedList.splice(max, 1); 
     }
     
-    
-    
     return sortedList;
+}
+
+var answered = false;
+var selected = [[false,true,false,false],[false,true,false,false]];
+
+function fillQuiz(response) {
+    
+    if(answered) {
+        return;
+    }
+    
+     if(!document.getElementById("quizContainer")) {
+        return;
+    }
+    
+    
+    for(var i = 0; i < selected.length; i++) {
+        for(var n = 0; n < selected[i].length; n++) {
+            
+            if(document.getElementById("check" + i + "," + n)) {
+            
+                if(document.getElementById("check" + i + "," + n).checked) {
+                    selected[i][n] = true;
+                }
+                else {
+                     selected[i][n] = false;
+                }
+            
+            }
+            else {
+                selected[i][n] = false;
+            }
+            
+        }
+    }
+    
+    
+    
+    var quiz = response;    
+        
+    var list = quiz.taskList;    
+    
+    var finalHTML = "";
+        
+    for(var i = 0; i < list.length; i++) {
+        var question = list[i];
+        
+        
+        var answers = question.answers;
+        var answerListHTML = "";
+        for(var n = 0; n < answers.length; n++) {
+            var answer = answers[n];
+            
+            var checkbox = "";
+            
+            if(selected[i][n]) {
+                checkbox = 'checked';
+            }
+            
+            if(question.correct[n]) {
+                answerListHTML += '<td style="width: 50%" class="correct"><input type="checkbox" id="check'+ i + "," + n + '" aria-label="Checkbox for following text input" style="margin-right: 2em;" '+checkbox+'>' + answer +  '</td>';
+            }
+            else {
+                answerListHTML += '<td style="width: 50%" class="wrong"><input type="checkbox" id="check'+ i + "," + n + '"  aria-label="Checkbox for following text input" style="margin-right: 2em" '+checkbox+'>' + answer +  '</td>';
+            }
+            
+            if(n % 2 == 1) {
+                answerListHTML += '</tr><tr>';
+            }
+        }
+        
+        var questionHTML = '<div class="question"> 	<h3 id="question">' + question.task + '</h3> 	<div class="input-group" style="margin-left: 2em; width: 100%; font-size: 14pt"> 		<table style="width: 100%"> 			<tr>' + answerListHTML + '</tr> 			</table>   </div>   </div>';    
+        
+        finalHTML += questionHTML;
+    }    
+    
+    document.getElementById("quizContainer").innerHTML = finalHTML;
+    
 }
 
 function parseQuestionList(response) {
     
     
     put(response, questionList);
+}
+
+function parseQuiz(response) {
+    
+    //hardcode quiz here
+    
+    var questionA = "Welche Aspekte sind Komponente der Wahrnehmung?";
+    var answersA = ["Visual System","Hair System","Auditory System","Work System"];
+    
+    var correctA = [true,false,true,false];
+    
+    var questionB = "Was beinhaltet deklaratives Wissen?";
+    var answersB = ["Wie man ein Instrument spielt","Wie man lernt","Chlorophyll macht die Blätter grün.","Die Mitochondrie ist das Kraftwerk der Zelle."];
+    
+    var correctB = [false,false,true,true];
+    
+    
+    var questions = [{"task": questionA, "answers": answersA, "correct":correctA },{"task": questionB, "answers": answersB, "correct":correctB }];
+    
+    
+    var quiz = {"taskList": questions};
+    
+    
+    put(response, quiz);
 }
 
 function fillQuestionList(response) {
@@ -309,6 +517,110 @@ function addNewComment() {
 function resetDB() {
     questionList = {"list" : []};
     set("questionList");
+    set("quiz");
+    set("survey");
+}
+
+function submitQuiz() {
+	//document.getElementById("quizContainer").style.textAlign = "center";
+	//document.getElementById("quizContainer").style.marginTop = "3em";
+	//document.getElementById("quizContainer").style.fontSize = "1.5em";
+	//document.getElementById("quizContainer").innerHTML = "Vielen Dank für die Teilnahme!";
+	tmp = document.getElementById("button");
+	tmp.parentNode.removeChild(tmp);
+    
+    var correctAnswers = document.getElementsByClassName("correct");
+    
+    for(var i = 0; i < correctAnswers.length; i++) {
+        correctAnswers[i].style.color = "green";
+    }
+    
+    var wrongAnswers = document.getElementsByClassName("wrong");
+    
+    for(var i = 0; i < wrongAnswers.length; i++) {
+        wrongAnswers[i].style.color = "red";
+    }
+    
+    answered = true;
+}
+
+function submitSurvey(){
+        document.getElementById("surveyContainer").style.display = "none";
+    
+		document.getElementById("message").style.textAlign = "center";
+		document.getElementById("message").style.marginTop = "3em";
+		document.getElementById("message").style.fontSize = "1.5em";
+		document.getElementById("message").innerHTML = "Vielen Dank für die Teilnahme!";
+		
+		tmp = document.getElementById("button");
+		tmp.parentNode.removeChild(tmp);
+    
+        for(var i = 0; i < selected.length; i++) {
+            for(var n = 0; n < selected[i].length; n++) {
+                
+                if(document.getElementById("check" + i + "," + n)) {
+                
+                    if(document.getElementById("check" + i + "," + n).checked) {
+                        surveyData.questions[i].results[n+1] += 1;
+                    }
+                
+                }
+                
+            }
+            
+            surveyData.questions[i].results[0] += 1;
+        }
+        
+        set("survey");
+        
+        document.getElementById("resultContainer").style.display = "inline";
+        
+        answered = true;
+    }
+    
+function fillSurveyResults() {
+    
+    var list = surveyData.questions;
+    
+    var finalHMTL = "";
+    
+    for(var i = 0; i < list.length; i++) {
+       var question = list[i];
+       
+       
+       var resultListHTML = "";
+       var choices = question.choices;
+       for(var n = 0; n < choices.length; n++) {
+           
+           var percent = Math.round((question.results[n+1]/question.results[0]) * 100);
+           if(question.results[0] == 0) percent = "-";
+           
+           
+           resultListHTML += '<td style="width: 50%">'+ choices[n] +': ' + percent +'% (' + question.results[n+1] + ')</td>';
+            
+           if(n % 2 == 1) {
+               resultListHTML += '</tr><tr>';
+           }
+           
+           
+       }
+       
+       var questionHTML = '<div class="question"> 	<h3 id="question">' + question.question + '(' + question.results[0] + ' Answers)</h3> 	<div class="input-group" style="margin-left: 2em; width: 100%; font-size: 14pt"> 		<table style="width: 100%"> 			<tr>' + resultListHTML + '</tr> 			</table>   </div>   </div>';
+       
+       
+       finalHMTL += questionHTML;
+    }
+    
+    document.getElementById("resultContainer").innerHTML = finalHMTL;
+}
+
+function arraySum(array) {
+    var sum = 0;
+    for(var i = 0; i < array.length; i++) {
+        sum += array[i];
+    }
+    
+    return sum;
 }
 
 function getUrlVars() {var vars = {};var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {if(vars[key]){if(vars[key] instanceof Array){vars[key].push(value);}else{vars[key] = [vars[key], value];}}else{vars[key] = value;}});return vars;}
