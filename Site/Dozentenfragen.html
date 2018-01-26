@@ -1,195 +1,94 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>LectureHero</title>
-<meta charset="UTF-8">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <head>
+        <title>LectureHero</title>
+        <meta charset="UTF-8"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"></link>
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"></link>
 
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-<script src="backend.js"></script>
+        <script src="backend.js"></script>
 
-<script> test();
-    function test(){
+        <style>
+            [id^='question']{
+            margin-left: 2em;
+            margin-top: 1em;
+            margin-bottom: 1em;
+            margin-right: 2em;
 
-        document.getElementById("headingQuestion1").innerHTML = "Welchem Studiengang gehören sie an?";
-        document.getElementById("answerQ1").innerHTML = "Informatik";
-        document.getElementById("answerQ2").innerHTML = "Technische Informatik";
-        document.getElementById("answerQ3").innerHTML = "Maschienenbau";
-        document.getElementById("answerQ4").innerHTML = "andere";
+            }
+            [id^='answer']{
+            width: 15%;
+            text-align: left;
+            margin-left: 2em;
+            }
 
-        }
-    function submit(){
-		document.getElementById("first-question").style.textAlign = "center";
-		document.getElementById("first-question").style.marginTop = "3em";
-		document.getElementById("first-question").style.fontSize = "1.5em";
-		document.getElementById("first-question").innerHTML = "Vielen Dank für die Teilnahme!";
-		var tmp = document.getElementsByClassName("input-group");
-		for(var i=0, len=tmp.length; i<len; i++)
-		{
-			tmp[i].innerHTML = "";
-		}
-		var tmp = document.getElementsByClassName("question");
-		for(var i=0; i < tmp.length; i++)
-		{
-			tmp[i].innerHTML = "";
-		}
-		tmp = document.getElementById("button");
-		tmp.parentNode.removeChild(tmp);
-    }
+            #button{
+            margin-top: 2em;
+            margin-left: 2em;
+            }
 
+            .answer{
+            width: 40%;
+            text-align: left;
+            margin-left: 2em;
+            }
+            .question{
+            margin-left: 2em;
+            }
+            .first-question{
+            margin-top: 3em;
+            margin-left: 2em;
+            }
 
-</script>
+        </style>
 
-<style>
-    [id^='question']{
-        margin-left: 2em;
-        margin-top: 1em;
-        margin-bottom: 1em;
-        margin-right: 2em;
-
-    }
-    [id^='answer']{
-        width: 15%;
-        text-align: left;
-        margin-left: 2em;
-    }
-
-    #button{
-      margin-top: 2em;
-      margin-left: 2em;
-    }
-
-    .answer{
-  		width: 40%;
-  		text-align: left;
-  		margin-left: 2em;
-  	}
-  	.question{
-  		margin-left: 2em;
-  	}
-  	.first-question{
-      margin-top: 3em;
-  		margin-left: 2em;
-  	}
-
-</style>
-
-</head>
-<body>
+    </head>
+    <body>
 
 
 
 
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="height: 8vh">
-        <div class="panel panel-default">
-        <h1 align="center" style="width: 100%">LectureHero: Human Computer Interaction</h1>
-    </div>
-</nav>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="height: 8vh">
+            <div class="panel panel-default">
+                <h1 align="center" style="width: 100%">LectureHero: Human Computer Interaction</h1>
+            </div>
+        </nav>
 
-<div class="row">
-   <!-- Sidebar -->
-  <div class="col-sm-2" style="padding: 0;align: center">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-sm-2" style="padding: 0;align: center">
 
-    <div class="btn-group-vertical" role="group" style="width: 100%;">
-      <a type="button" class="btn btn-default" href="studentenfragen.html">Studentenfragen</a>
-      <a type="button" class="btn btn-default" href="dozentenfragen.html">Dozentenfragen</a>
-      <a type="button" class="btn btn-default" href="quiz.html">Quiz</a>
-      <a type="button" class="btn btn-default" href="feedback.html">Feedback</a>
-      <a type="button" class="btn btn-default" href="faq.html">FAQ</a>
-    </div>
-  </div>
-  <!-- Main Content -->
-  <div class="col-sm-10" style="padding: 0">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="height: 8vh">
-  		<h1 align="center" style="width: 100%">Dozentenfragen</h1>
-  	</nav>
+                <div class="btn-group-vertical" role="group" style="width: 100%;">
+                    <a type="button" class="btn btn-default" href="studentenfragen.html">Studentenfragen</a>
+                    <a type="button" class="btn btn-default" href="dozentenfragen.html">Dozentenfragen</a>
+                    <a type="button" class="btn btn-default" href="quiz.html">Quiz</a>
+                    <a type="button" class="btn btn-default" href="feedback.html">Feedback</a>
+                    <a type="button" class="btn btn-default" href="faq.html">FAQ</a>
+                </div>
+            </div>
+            <!-- Main Content -->
+            <div class="col-sm-10" style="padding: 0">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light" style="height: 8vh">
+                    <h1 align="center" style="width: 100%">Dozentenfragen</h1>
+                </nav>
 
-  	<div class="first-question">
-  <h3  id="first-question">Welche Programmiersprachen beherrschen Sie?</h3>
-  <div class="input-group" style="margin-left: 2em; width: 100%; height: 200%; font-size: 14pt">
-    <table>
-      <tr>
-        <td>
-          <input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em">
-          Java
-        </td>
-        <td>
-          <span style="color: white"> __________________________ </span>
-        </td>
-        <td>
-          <input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em">
-          C/C++
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em">
-          PHP
-        </td>
-        <td>
-          <span style="color: white"> __________________________ </span>
-        </td>
-        <td>
-          <input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em">
-          Python
-        </td>
-      </tr>
-      </table>
-  </div>
-  </div>
-  <div class="question">
-  <h3>Welchem Studiengang gehören Sie an?</h3>
-  <div class="input-group" style="margin-left: 2em; width: 100%; height: 200%; font-size: 14pt">
-    <table>
-      <tr>
-        <td>
-          <input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em">
-          Informatik
-        </td>
-        <td>
-          <span style="color: white"> _________________ </span>
-        </td>
-        <td>
-          <input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em">
-          Technische Informatik
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em">
-          Maschinenbau
-        </td>
-        <td>
-          <span style="color: white"> _________________ </span>
-        </td>
-        <td>
-          <input type="checkbox" aria-label="Checkbox for following text input" style="margin-right: 2em">
-          Andere
-        </td>
-      </tr>
-      </table>
-  </div>
-  </div>
-  <p> </p>
-  <button id="button" style="margin-top:2em; margin-left:2em" type="submit" class="btn btn-primary" onclick="submit()">Submit</button>
-  </div>
-
-
-
-<script>
-    test();
-
-</script>
-
-</body>
+                <div id="surveyContainer">
+                </div>
+                <div id="message" style="display: none"></div>
+                <div id="resultContainer" style="display: none"></div>
+                <p> </p>
+                <button id="button" style="margin-top:2em; margin-left:2em" type="submit" class="btn btn-primary" onclick="submitSurvey()">Submit</button>
+            </div>
+        </div>
+    </body>
 </html>
